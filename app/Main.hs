@@ -31,6 +31,10 @@ main
         print $ encode $ Program $ parse $ tokenize contents
       ["decode", encoding] -> do
         print (decode $ read encoding :: Program)
+      ["decodeInstr", encoding] -> do
+        print (decode $ read encoding :: Instruction)
+      ["decodeList", encoding] -> do
+        print (encode (decode $ read encoding :: Program))
       ["decode2", exp, encoding] -> do
         print (decode $ 2 ^ read exp * read encoding :: Program)
       _ -> do
